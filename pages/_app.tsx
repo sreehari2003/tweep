@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import { Toaster } from "sonner";
 import { AuthCtx } from "@app/context/auth";
-import { useEffect, useState } from "react";
 import { DefaulSeo } from "@app/components/DefaulSeo";
 
 const queryClient = new QueryClient();
