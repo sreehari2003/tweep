@@ -1,6 +1,7 @@
 import { Inter, Poppins, Playfair_Display } from "next/font/google";
 import { Navbar } from "@app/components/Navbar";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -23,6 +24,10 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-14 ${inter.className}`}
     >
+      <NextSeo
+        title="Landing page"
+        description="tweep is defi based open source transparet and eficent borrowing and lending solana"
+      />
       <Navbar />
       <span className="flex flex-col place-items-center before:absolute before:h-[00px] before:w-[480px]  before:rounded-sm  before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[120px] after:w-[300px] after:bg-gradient-conic after:from-[#64AE9D] after:via-[#64AE9D] after:blur-md after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-[#64AE9D] after:dark:from-[#64AE9D] after:dark:via-[#64AE9D]/40 before:lg:h-[160px]"></span>
       <div className="relative flex flex-col place-items-center ">

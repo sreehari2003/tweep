@@ -6,6 +6,7 @@ import { AuthCtx } from "@app/context/auth";
 import { useState } from "react";
 import Router from "next/router";
 import { Loader } from "@app/components";
+import { DefaulSeo } from "@app/components/DefaulSeo";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
       <QueryClientProvider client={queryClient}>
         <AuthCtx>
+          <DefaulSeo />
           <Toaster />
           <Loader />
           <div className="d-none">
@@ -38,6 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthCtx>
+        <DefaulSeo />
         <Toaster />
         <Component {...pageProps} />
       </AuthCtx>
