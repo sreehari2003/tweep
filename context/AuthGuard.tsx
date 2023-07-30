@@ -13,6 +13,7 @@ export const AuthGuard = ({ children }: Itype): JSX.Element => {
     if (!ctx.data) {
       router.push("/auth");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ctx.data, router]);
 
   return <>{children}</>;

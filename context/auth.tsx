@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { supabase } from "@app/config/supaClient";
 import { useRouter } from "next/router";
 import { User } from "@supabase/supabase-js";
+import { toast } from "sonner";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
 
 type Itype = {
   children: React.ReactNode;
@@ -33,8 +35,9 @@ export const AuthCtx = ({ children }: Itype) => {
         password: password,
       });
       if (error) {
-        alert("Login failed");
+        toast.error("login failed");
       } else {
+        toast("Login successfull");
         setData(data.user);
         router.push("/movies");
       }
@@ -45,17 +48,35 @@ export const AuthCtx = ({ children }: Itype) => {
         password,
       });
       if (error) {
-        alert("signup failed");
+        toast.error("signup failed");
       } else {
+        toast("signup successfull");
         setData(data.user);
         router.push("/movies");
       }
     }
   }
 
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setData(user);
+    })();
+  }, []);
+
+  const client = useQueryClient();
   async function signOut() {
     const { error } = await supabase.auth.signOut();
-    console.error(error);
+    if (error) {
+      toast.error("signup failed");
+    } else {
+      setData(null);
+      toast.success("signout successfull");
+      router.push("/");
+      client.invalidateQueries(["movies"]);
+    }
   }
 
   const values = useMemo(
@@ -65,7 +86,7 @@ export const AuthCtx = ({ children }: Itype) => {
       logout: signOut,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [data, signOut]
   );
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

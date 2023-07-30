@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { IMovie } from "@app/types";
 import { ENV } from "@app/config/env";
+import { useAuth } from "../useAuth";
 
 const getMovies = async () => {
   const url = "https://api.themoviedb.org/3/movie/popular";

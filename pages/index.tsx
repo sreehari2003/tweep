@@ -1,5 +1,6 @@
 import { Inter, Poppins, Playfair_Display } from "next/font/google";
 import { Navbar } from "@app/components/Navbar";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -12,59 +13,43 @@ const playfair = Playfair_Display({
   style: "italic",
 });
 
+const subPoppins = Poppins({
+  weight: "400",
+  subsets: ["latin"],
+});
+
 export default function Home() {
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-14 ${inter.className}`}
     >
       <Navbar />
-      {/* <span className="relative flex flex-col place-items-center before:absolute before:h-[00px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]"></span> */}
+      <span className="flex flex-col place-items-center before:absolute before:h-[00px] before:w-[480px]  before:rounded-sm  before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[120px] after:w-[300px] after:bg-gradient-conic after:from-[#64AE9D] after:via-[#64AE9D] after:blur-md after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-[#64AE9D] after:dark:from-[#64AE9D] after:dark:via-[#64AE9D]/40 before:lg:h-[160px]"></span>
       <div className="relative flex flex-col place-items-center ">
+        <span className="text-[#64AE9D] ">Jet Protocol</span>
         <h1 className={`font-[600]  ${poppins.className} text-[48px]`}>
           the next generation of
         </h1>
         <span className={`text-[48px] ${playfair.className}`}>
           defi governance
         </span>
+        <div
+          className={`text-[20px] ${subPoppins.className} text-[#ffffff99] text-center mt-5`}
+        >
+          experience open source,transparent and efficent borrowing <br />
+          <span className="text-center">and lending in solana</span>
+        </div>
+        <div className="flex gap-3 mt-4">
+          <button className="bg-[#64AE9D] px-7 py-2 rounded-full text-black">
+            read docs
+          </button>
+          <button className="bg-black px-7 py-2 rounded-full text-white border-[1px] border-white">
+            how it works
+          </button>
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <h2 className={`mb-3 text-2xl font-semibold`}>
-          Docs{" "}
-          <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-            -&gt;
-          </span>
-        </h2>
-        <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          Find in-depth information about Next.js features and API.
-        </p>
-        <h2 className={`mb-3 text-2xl font-semibold`}>
-          Learn{" "}
-          <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-            -&gt;
-          </span>
-        </h2>
-        <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          Learn about Next.js in an interactive course with&nbsp;quizzes!
-        </p>
-        <h2 className={`mb-3 text-2xl font-semibold`}>
-          Templates{" "}
-          <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-            -&gt;
-          </span>
-        </h2>
-        <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          Discover and deploy boilerplate example Next.js&nbsp;projects.
-        </p>
-        <h2 className={`mb-3 text-2xl font-semibold`}>
-          Deploy{" "}
-          <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-            -&gt;
-          </span>
-        </h2>
-        <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          Instantly deploy your Next.js site to a shareable URL with Vercel.
-        </p>
+      <div className="mb-[120px] hover:cursor-pointer">
+        <Image src="/Frame 10.png" alt="iage" height="700" width="2000" />
       </div>
     </main>
   );
